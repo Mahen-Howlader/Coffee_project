@@ -1,10 +1,13 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Coffeecart from "./Component/Coffeecart";
+import { useState } from "react";
 // import "./App.css";
 
 function App() {
-  const loader = useLoaderData();
-  console.log(loader);
+
+  const loaderData = useLoaderData();
+  const [data,setData] = useState(loaderData)
+  console.log(data);
   return (
     <>
       <div className="container mx-auto">
@@ -15,8 +18,8 @@ function App() {
             Add Coffee
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-5">{loader.map((coffee,index) => {
-         return   <Coffeecart key={index} props={coffee}></Coffeecart>
+        <div className="grid grid-cols-2 gap-5">{data.map((coffee,index) => {
+         return   <Coffeecart key={index} props={coffee} loadedata={data} setdata={setData}></Coffeecart>
         })}</div>
       </div>
       <div className="flex gap-x-10">
